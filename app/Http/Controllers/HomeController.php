@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function pirkumi()
+    {
+        return view('purchases');
+    }
+    public function total()
+    {
+        return view('Total');
+    }
 }

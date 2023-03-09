@@ -19,4 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/Produkti',[App\Http\Controllers\ProductsController::class, 'products'])->name('productsinfo');
+Route::get('/Pirkumi', [App\Http\Controllers\HomeController::class, 'pirkumi'])->name('pirkumi');
+Route::post('/Pirkumi', [App\Http\Controllers\PirkumiController::class, 'pirkums'])->name('pirkums');
+Route::get('/Kopsavilkums', [App\Http\Controllers\TotalController::class, 'totalcount'])->name('totalcount');
+});

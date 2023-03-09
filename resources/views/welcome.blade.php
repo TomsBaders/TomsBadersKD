@@ -7,36 +7,59 @@
         <title>Welcome</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
         <style>
-            .card {
-                margin: 0 auto;
-                float: none;
-                margin-bottom: 10px;
+            /* Styles for the page container */
+            body {
+                background-color: #2d3748;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
+
+            .container {
+                background-color: #fff;
+                width: 400px;
+                height: 300px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container h3 {
+                font-size: 30px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            button {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
         </style>
     </head>
     <body>
-    <IMG SRC="TEST.JPEG">
-       <div class="container">
-            <div class="card text-center justify-content-center" style="width: 30%;">
-                <div class="card-body">
+          <div class="container">
                         @if (Route::has('login'))
                                 @auth
-                                    <h3>Laipni lūgti atpakaļ!</h3>
-                                    <a href="{{ url('/home') }}" class="btn btn-primary">Atgriezties</a>
+                                    <h3>Jūs jau esiet pieslēgušies!</h3>
+                                    <a href="{{ url('/Pirkumi') }}" class="btn btn-primary">Atgriezties</a>
                                 @else
-                                    <h3>Veiciet pieslēgšanos!</h3>
+                                @guest()
+                                    <h3>Laipni lūgti, veiciet pieslēgšanos!</h3>
                                     <a href="{{ route('login') }}" class="btn btn-primary">Pieslēgšanās</a>
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-primary">Reģistrēšanās</a>
-                                    @endif
+                                    <br>
+                                    <h3>Neesiet reģistrēts?</h3>
+                                    <a href="{{ route('register') }}" class="btn btn-primary">Reģistrēšanās</a>
+                                @endguest
                                 @endauth
                         @endif
-                </div>
-            </div>
-       </div>
+           </div>
     </body>
 </html>
